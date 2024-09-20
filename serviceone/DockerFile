@@ -1,0 +1,4 @@
+FROM openjdk:17
+ADD target/serviceone-1.0-SNAPSHOT.jar .
+EXPOSE 8080
+CMD ["java","-jar", "serviceone-1.0-SNAPSHOT.jar"]

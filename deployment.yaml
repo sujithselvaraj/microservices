@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: serviceone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serviceone
+    template:
+      metadata:
+        labels:
+          app: serviceone
+      spec:
+        containers:
+          - name: serviceone
+            image: microservices-serviceone
+            imagePullPolicy: Never
+            ports:
+              - containerPort: 8080
+            env:
+              - name: SPRING_DATASOURCE_URL
+                value: "jdbc:postgresql://postgres:5432/serviceone"
+              - name: SPRING_DATASOURCE_USERNAME
+                value: "postgres"
+              - name: SPRING_DATASOURCE_PASSWORD
+                value: "admin"
+
+
